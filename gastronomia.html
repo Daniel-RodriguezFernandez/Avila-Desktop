@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Ávila-Gastronomía</title>
+    <meta name="author" content="Daniel Rodríguez Fernández" />
+    <meta name="description" content="Página de gastronomía de Ávila Desktop" />
+    <meta name="keywords" content="Ávila, Avila, Avila Desktop, Ávila Desktop, Desktop, Gastronomía, Comida" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilo/estilo.css" />
+    <link rel="stylesheet" href="estilo/layout.css" />
+    <link rel="icon" type="image/x-icon" href="multimedia/favicon.ico" />
+</head>
+
+<body>
+    <h1><a href="index.html">Ávila Desktop</a></h1>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="gastronomia.html" class="activo">Gastronomía</a>
+        <a href="rutas.html">Rutas</a>
+        <a href="metereologia.html">Meteorología</a>
+        <a href="juego.html">Juego</a>
+        <a href="reservas.php">Reservas</a>
+        <a href="ayuda.html">Ayuda</a>
+    </nav>
+    <main>
+        <p>Estás en: <a href="index.html">Inicio</a> &rsaquo; Gastronomía</p>
+        <h2>Gastronomía de Ávila</h2>
+        <p>
+            La provincia de Ávila ofrece una gastronomía contundente y tradicional, marcada por su clima de montaña y
+            sus productos de gran calidad reconocidos a nivel nacional.
+        </p>
+
+        <picture>
+            <source media="(max-width: 465px)" srcset="multimedia/chuleton-movil.png" />
+            <source media="(max-width: 799px)" srcset="multimedia/chuleton-tablet.png" />
+            <source media="(min-width: 800px)" srcset="multimedia/chuleton.png" />
+            <img src="multimedia/chuleton.png" alt="Chuletón de Ávila" />
+        </picture>
+
+        <section>
+            <h3>Platos más representativos</h3>
+            <p>Los platos más populares de la cocina abulense, ordenados de mayor a menor reconocimiento:</p>
+            <ol>
+                <li>Chuletón de Ávila</li>
+                <li>Judías del Barco de Ávila con chorizo</li>
+                <li>Patatas revolconas</li>
+                <li>Yemas de Santa Teresa</li>
+            </ol>
+        </section>
+
+        <section>
+            <h3>Productos típicos</h3>
+            <p>La despensa abulense se sustenta en productos de la tierra de gran calidad:</p>
+            <ul>
+                <li>
+                    Carnes
+                    <ul>
+                        <li>Ternera de Ávila (IGP)</li>
+                        <li>Cordero churro</li>
+                        <li>Cerdo ibérico de la sierra</li>
+                    </ul>
+                </li>
+                <li>Legumbres: judías del Barco de Ávila (IGP) y garbanzos de la comarca</li>
+                <li>Repostería: yemas de Santa Teresa, perrunillas y tortas de anís</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Glosario gastronómico</h3>
+            <dl>
+                <dt>Chuletón de Ávila</dt>
+                <dd>
+                    Chuleta de gran tamaño procedente de la ternera con Indicación Geográfica Protegida de Ávila.
+                    Se sirve a la parrilla, con la carne rosada en su interior y una costra dorada exterior.
+                </dd>
+
+                <dt>Patatas revolconas</dt>
+                <dd>
+                    Plato tradicional elaborado con patatas cocidas y majadas, aliñadas con pimentón ahumado y
+                    aceite de oliva. Se suelen acompañar con torreznos crujientes.
+                </dd>
+
+                <dt>Yemas de Santa Teresa</dt>
+                <dd>
+                    Dulce típico de Ávila elaborado con yema de huevo y azúcar, con una textura suave y
+                    un sabor intenso. Su nombre rinde homenaje a Santa Teresa de Jesús, patrona de la ciudad.
+                </dd>
+
+                <dt>Judías del Barco de Ávila</dt>
+                <dd>
+                    Legumbre con Indicación Geográfica Protegida cultivada en el valle del Tormes. De piel fina
+                    y textura cremosa, son la base del cocido abulense y los potajes de invierno.
+                </dd>
+            </dl>
+
+            <video controls preload="auto">
+                <source src="multimedia/gastronomia.mp4" type="video/mp4" />
+                <source src="multimedia/gastronomia.webm" type="video/webm" />
+                Tu navegador no soporta la reproducción de video.
+            </video>
+
+        </section>
+
+        <section>
+            <h3>Temporada de los platos típicos</h3>
+            <table>
+                <caption>Platos típicos de Ávila y su temporada recomendada</caption>
+                <thead>
+                    <tr>
+                        <th id="col-plato" scope="col">Plato</th>
+                        <th id="col-temporada" scope="col">Temporada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td headers="col-plato">Chuletón de Ávila</td>
+                        <td headers="col-temporada">Todo el año</td>
+                    </tr>
+                    <tr>
+                        <td headers="col-plato">Judías del Barco con chorizo</td>
+                        <td headers="col-temporada">Otoño e invierno</td>
+                    </tr>
+                    <tr>
+                        <td headers="col-plato">Patatas revolconas</td>
+                        <td headers="col-temporada">Todo el año</td>
+                    </tr>
+                    <tr>
+                        <td headers="col-plato">Yemas de Santa Teresa</td>
+                        <td headers="col-temporada">Todo el año</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+
+</html>
