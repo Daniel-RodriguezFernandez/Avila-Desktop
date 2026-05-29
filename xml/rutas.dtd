@@ -1,0 +1,50 @@
+<!ELEMENT rutas (ruta+)>
+
+<!ELEMENT ruta (horario, descripcion, personasAdecuadas, inicio,
+                referencias, hitos, planimetria, altimetria)>
+<!ATTLIST ruta
+    id ID #REQUIRED
+    nombre CDATA #REQUIRED
+    tipo CDATA #REQUIRED
+    medio CDATA #REQUIRED
+    agencia CDATA #REQUIRED
+    recomendacion CDATA #REQUIRED
+>
+
+<!ELEMENT horario (fecha_inicio?, hora_inicio?, duracion)>
+<!ELEMENT fecha_inicio (#PCDATA)>
+<!ELEMENT hora_inicio (#PCDATA)>
+<!ELEMENT duracion (#PCDATA)>
+
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT personasAdecuadas (#PCDATA)>
+
+<!ELEMENT inicio (lugar, direccion, coordenadas)>
+<!ELEMENT lugar (#PCDATA)>
+<!ELEMENT direccion (#PCDATA)>
+
+<!ELEMENT coordenadas (longitud, latitud, altitud)>
+<!ELEMENT latitud (#PCDATA)>
+<!ELEMENT longitud (#PCDATA)>
+<!ELEMENT altitud (#PCDATA)>
+
+<!ELEMENT referencias (referencia+)>
+<!ELEMENT referencia (#PCDATA)>
+
+<!ELEMENT hitos (hito+)>
+<!ELEMENT hito (descripcion, coordenadas, distancia, fotografias, videos?)>
+<!ATTLIST hito nombre CDATA #REQUIRED>
+
+<!ELEMENT distancia (#PCDATA)>
+<!ATTLIST distancia unidades CDATA #REQUIRED>
+
+<!ELEMENT fotografias (fotografia+)>
+<!ELEMENT fotografia (#PCDATA)>
+
+<!ELEMENT videos (video+)>
+<!ELEMENT video (#PCDATA)>
+
+<!ELEMENT trazado (coordenadas+)>
+
+<!ELEMENT planimetria EMPTY>
+<!ELEMENT altimetria EMPTY>

@@ -20,7 +20,6 @@ body {
 /* Especificidad: (0,0,1) */
 h1 {
     width: 100%;
-    font-size: 1.25rem;
 }
 
 /* Especificidad: (0,0,1) */
@@ -43,44 +42,39 @@ main {
     max-width: 960px;
     margin: 0 auto;
     padding: 1.2rem 1rem;
-    background-color: #ffffff;
 }
 
-/* Especificidad: (0,0,1) */
-table {
-    display: block;
-    overflow-x: auto;
-}
+
 
 @media screen and (min-width: 600px) {
 
     /* Especificidad: (0,0,1) */
     h1 {
+        /* warning provocado por redefinición de font-size*/
         font-size: 1.55rem;
     }
 
     /* Especificidad: (0,0,1) */
     main {
+        /* warning provocado por redefinición de padding-bottom, padding-left, padding-top y padding-right */
         padding: 1.8rem 1.5rem;
     }
 
-    /* Especificidad: (0,0,1) */
-    table {
-        display: table;
-        overflow-x: visible;
-    }
 }
 
 @media screen and (min-width: 1024px) {
 
     /* Especificidad: (0,0,1) */
     h1 {
+        /* warning provocado por redefinición de font-size */
         font-size: 1.75rem;
     }
 
     /* Especificidad: (0,0,1) */
     main {
+        /* warning provocado por redefinición de max-width */
         max-width: 1100px;
+        /* warning provocado por redefinición de padding-bottom,, padding-left, padding-top y padding-right */
         padding: 2.5rem 3rem;
     }
 }
