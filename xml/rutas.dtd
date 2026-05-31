@@ -32,7 +32,7 @@
 <!ELEMENT referencia (#PCDATA)>
 
 <!ELEMENT hitos (hito+)>
-<!ELEMENT hito (descripcion?, coordenadas, distancia?, fotografias?, videos?)>
+<!ELEMENT hito (descripcion?, coordenadas, distancia, fotografias?, videos?)>
 <!ATTLIST hito nombre CDATA #IMPLIED>
 
 <!ELEMENT distancia (#PCDATA)>

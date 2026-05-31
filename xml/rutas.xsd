@@ -130,16 +130,12 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <!-- Un hito anonimo (punto del recorrido) es un hito al que le falta
-         informacion: solo conserva sus coordenadas. Por eso descripcion,
-         distancia, fotografias, videos y el atributo nombre son opcionales,
-         y unicamente coordenadas es obligatorio. -->
     <xs:element name="hito">
         <xs:complexType>
             <xs:sequence>
                 <xs:element minOccurs="0" maxOccurs="1" ref="descripcion" />
                 <xs:element ref="coordenadas" />
-                <xs:element minOccurs="0" maxOccurs="1" ref="distancia" />
+                <xs:element minOccurs="1" maxOccurs="1" ref="distancia" />
                 <xs:element minOccurs="0" maxOccurs="1" ref="fotografias" />
                 <xs:element minOccurs="0" maxOccurs="1" ref="videos" />
             </xs:sequence>
