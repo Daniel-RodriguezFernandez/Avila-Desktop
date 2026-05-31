@@ -5,16 +5,19 @@ NS = {'r': 'http://www.uniovi.es'}
 
 ARCHIVO_XML = 'rutas.xml'
 
+
+def esAnonimo(hito):
+    return hito.get('nombre') is None
+
+
 class Kml(object):
 
     def __init__(self, nombreDocumento):
-        """ Crea el elemento raiz <kml>, su espacio de nombres y el <Document> """
         self.raiz = ET.Element('kml', xmlns="http://www.opengis.net/kml/2.2")
         self.doc = ET.SubElement(self.raiz, 'Document')
         ET.SubElement(self.doc, 'name').text = nombreDocumento
 
     def addPlacemark(self, nombre, descripcion, lon, lat, alt, modoAltitud):
-        """ Anade un waypoint (Placemark con un Point) """
         pm = ET.SubElement(self.doc, 'Placemark')
         ET.SubElement(pm, 'name').text = nombre
         ET.SubElement(pm, 'description').text = descripcion
@@ -24,7 +27,6 @@ class Kml(object):
 
     def addLineString(self, nombre, extrude, tesela, listaCoordenadas,
                       modoAltitud, color, ancho):
-        """ Anade una linea (Placemark con un LineString) con su estilo """
         pm = ET.SubElement(self.doc, 'Placemark')
         ET.SubElement(pm, 'name').text = nombre
         estilo = ET.SubElement(pm, 'Style')
@@ -38,14 +40,12 @@ class Kml(object):
         ET.SubElement(ls, 'coordinates').text = listaCoordenadas
 
     def escribir(self, nombreArchivoKML):
-        """ Escribe el archivo KML con declaracion, indentacion y codificacion """
         arbol = ET.ElementTree(self.raiz)
         ET.indent(arbol)
         arbol.write(nombreArchivoKML, encoding='utf-8', xml_declaration=True)
 
 
 def texto(elemento):
-    """ Devuelve el texto de un elemento, sin espacios ni saltos de linea """
     if elemento is None or elemento.text is None:
         return ''
     return elemento.text.strip()
@@ -72,7 +72,10 @@ def procesarRuta(ruta):
     kml.addPlacemark('INICIO: ' + lugar, 'Lugar de inicio de la ruta',
                      lon, lat, alt, 'clampToGround')
 
+
     for hito in ruta.findall('r:hitos/r:hito', NS):
+        if esAnonimo(hito):
+            continue
         nombreHito = hito.get('nombre')
         descripcionHito = texto(hito.find('r:descripcion', NS))
         coordHito = hito.find('r:coordenadas', NS)
@@ -81,7 +84,12 @@ def procesarRuta(ruta):
                          'clampToGround')
 
     listaCoordenadas = ''
-    for coord in ruta.findall('r:trazado/r:coordenadas', NS):
+    for hito in ruta.findall('r:hitos/r:hito', NS):
+        if not esAnonimo(hito):
+            continue
+        coord = hito.find('r:coordenadas', NS)
+        if coord is None:
+            continue
         lon, lat, alt = coordenadasDe(coord)
         listaCoordenadas += '{},{},{}\n'.format(lon, lat, alt)
 

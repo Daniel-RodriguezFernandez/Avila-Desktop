@@ -32,8 +32,8 @@
 <!ELEMENT referencia (#PCDATA)>
 
 <!ELEMENT hitos (hito+)>
-<!ELEMENT hito (descripcion, coordenadas, distancia, fotografias, videos?)>
-<!ATTLIST hito nombre CDATA #REQUIRED>
+<!ELEMENT hito (descripcion?, coordenadas, distancia?, fotografias?, videos?)>
+<!ATTLIST hito nombre CDATA #IMPLIED>
 
 <!ELEMENT distancia (#PCDATA)>
 <!ATTLIST distancia unidades CDATA #REQUIRED>
@@ -43,8 +43,6 @@
 
 <!ELEMENT videos (video+)>
 <!ELEMENT video (#PCDATA)>
-
-<!ELEMENT trazado (coordenadas+)>
 
 <!ELEMENT planimetria EMPTY>
 <!ELEMENT altimetria EMPTY>

@@ -17,7 +17,6 @@
                 <xs:element ref="inicio" />
                 <xs:element ref="referencias" />
                 <xs:element ref="hitos" />
-                <xs:element ref="trazado" />
                 <xs:element ref="planimetria" />
                 <xs:element ref="altimetria" />
             </xs:sequence>
@@ -131,16 +130,20 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <!-- Un hito anonimo (punto del recorrido) es un hito al que le falta
+         informacion: solo conserva sus coordenadas. Por eso descripcion,
+         distancia, fotografias, videos y el atributo nombre son opcionales,
+         y unicamente coordenadas es obligatorio. -->
     <xs:element name="hito">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="descripcion" />
+                <xs:element minOccurs="0" maxOccurs="1" ref="descripcion" />
                 <xs:element ref="coordenadas" />
-                <xs:element ref="distancia" />
-                <xs:element ref="fotografias" />
+                <xs:element minOccurs="0" maxOccurs="1" ref="distancia" />
+                <xs:element minOccurs="0" maxOccurs="1" ref="fotografias" />
                 <xs:element minOccurs="0" maxOccurs="1" ref="videos" />
             </xs:sequence>
-            <xs:attribute name="nombre" type="xs:string" use="required" />
+            <xs:attribute name="nombre" type="xs:string" use="optional" />
         </xs:complexType>
     </xs:element>
 
@@ -188,14 +191,6 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="video" type="xs:string" />
-
-    <xs:element name="trazado">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element minOccurs="1" maxOccurs="unbounded" ref="coordenadas" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
 
     <xs:element name="planimetria" />
     <xs:element name="altimetria" />

@@ -1,4 +1,4 @@
-    import os
+import os
 import math
 import xml.etree.ElementTree as ET
 
@@ -17,6 +17,10 @@ PLOT_ANCHO = ANCHO - MARGEN_IZQ - MARGEN_DER
 PLOT_ALTO = ALTO - MARGEN_SUP - MARGEN_INF
 
 RADIO_TIERRA = 6371000.0   # metros
+
+
+def esAnonimo(hito):
+    return hito.get('nombre') is None
 
 
 class Svg(object):
@@ -93,10 +97,17 @@ def pasoBonito(rango, objetivoMarcas):
 def construirPerfil(ruta):
     distancias = []
     altitudes = []
+    lons = []
+    lats = []
     distanciaAcum = 0.0
     lonPrev = latPrev = None
 
-    for coord in ruta.findall('r:trazado/r:coordenadas', NS):
+    for hito in ruta.findall('r:hitos/r:hito', NS):
+        if not esAnonimo(hito):
+            continue
+        coord = hito.find('r:coordenadas', NS)
+        if coord is None:
+            continue
         lon = float(texto(coord.find('r:longitud', NS)))
         lat = float(texto(coord.find('r:latitud', NS)))
         altTxt = texto(coord.find('r:altitud', NS))
@@ -106,16 +117,36 @@ def construirPerfil(ruta):
             distanciaAcum += haversine(lonPrev, latPrev, lon, lat)
         distancias.append(distanciaAcum)
         altitudes.append(alt)
+        lons.append(lon)
+        lats.append(lat)
         lonPrev, latPrev = lon, lat
 
-    return distancias, altitudes
+    return distancias, altitudes, lons, lats
+
+
+def localizarHito(hito, lons, lats, distancias, altitudes):
+    """ Proyecta un hito con nombre sobre el perfil: devuelve la distancia
+        acumulada y la altitud del punto anonimo (del trazado) mas cercano. """
+    coord = hito.find('r:coordenadas', NS)
+    if coord is None or not lons:
+        return None
+    hlon = float(texto(coord.find('r:longitud', NS)))
+    hlat = float(texto(coord.find('r:latitud', NS)))
+    mejor = 0
+    mejorDist = None
+    for i in range(len(lons)):
+        d = haversine(hlon, hlat, lons[i], lats[i])
+        if mejorDist is None or d < mejorDist:
+            mejorDist = d
+            mejor = i
+    return distancias[mejor], altitudes[mejor]
 
 
 def procesarRuta(ruta):
     idRuta = ruta.get('id')
     nombreRuta = ruta.get('nombre')
 
-    distancias, altitudes = construirPerfil(ruta)
+    distancias, altitudes, lons, lats = construirPerfil(ruta)
     if len(distancias) < 2:
         print('Ruta', idRuta, 'sin trazado suficiente; se omite.')
         return
@@ -181,6 +212,35 @@ def procesarRuta(ruta):
     cadenaPuntos = ' '.join(puntos)
 
     svg.addPolyline(cadenaPuntos, '#1a6fc4', '2', 'rgba(26,111,196,0.18)')
+
+
+    for hito in ruta.findall('r:hitos/r:hito', NS):
+        if esAnonimo(hito):
+            continue
+        posicion = localizarHito(hito, lons, lats, distancias, altitudes)
+        if posicion is None:
+            continue
+        distHito, altHito = posicion
+        x = xpix(distHito)
+        yCurva = ypix(altHito)
+
+        svg.addLine('{:.2f}'.format(x), str(MARGEN_SUP + PLOT_ALTO),
+                    '{:.2f}'.format(x), '{:.2f}'.format(yCurva),
+                    '#c0392b', '1')
+
+        ET.SubElement(svg.raiz, 'circle', {
+            'cx': '{:.2f}'.format(x), 'cy': '{:.2f}'.format(yCurva),
+            'r': '3', 'fill': '#c0392b'})
+
+        xTexto = x + - 5
+        yTexto = MARGEN_SUP + PLOT_ALTO - 6
+        svg.addText(hito.get('nombre'),
+                    '{:.2f}'.format(xTexto), '{:.2f}'.format(yTexto),
+                    'Verdana', '10',
+                    'text-anchor: start; fill: #c0392b; font-weight: bold;',
+                    transform='rotate(-90 {:.2f} {:.2f})'.format(xTexto, yTexto))
+
+  
     svg.addText('Distancia (m)',
                 str(MARGEN_IZQ + PLOT_ANCHO / 2), str(ALTO - 20),
                 'Verdana', '13', 'text-anchor: middle; fill: #333;')
