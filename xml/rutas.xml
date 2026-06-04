@@ -1,17 +1,17 @@
-<?xml version='1.0' encoding='utf-8'?>
-<rutas xmlns="http://www.uniovi.es" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.uniovi.es rutas.xsd">
-  <ruta id="R01" nombre="AVILA CIUDAD" tipo="Arquitectura y Monumentos" medio="A pie" agencia="Sin agencia" recomendacion="7">
+<?xml version='1.0' encoding='UTF-8'?>
+<rutas xmlns="http://www.uniovi.es" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.uniovi.es rutas.xsd">
+  <ruta id="R01" nombre="AVILA CIUDAD" tipo="Arquitectura y Monumentos" medio="A pie"
+    agencia="Sin agencia" recomendacion="7">
     <horario>
       <fecha_inicio>2026-05-14</fecha_inicio>
       <hora_inicio>17:30:00</hora_inicio>
       <duracion>PT2H50M</duracion>
     </horario>
-    <descripcion>
-            PASEO CIRCULAR POR LA CIUDAD DE AVILA ciudad tranquila que invita a disfrutar con calma del tiempo, el momento del atardecer desde el mirador de los Cuatro Postes. Está extramuros que al caer la noche, la vista de la muralla iluminada en la oscurida. 
-        </descripcion>
-    <personasAdecuadas>
-            Se puede ir con niños
-        </personasAdecuadas>
+    <descripcion> PASEO CIRCULAR POR LA CIUDAD DE AVILA ciudad tranquila que invita a disfrutar con
+      calma del tiempo, el momento del atardecer desde el mirador de los Cuatro Postes. Está
+      extramuros que al caer la noche, la vista de la muralla iluminada en la oscurida. </descripcion>
+    <personasAdecuadas> Se puede ir con niños </personasAdecuadas>
     <inicio>
       <lugar>Área de Autocaravanas de Ávila</lugar>
       <direccion>Calle Santa María de la Cabeza, 15, 05005, Ávila</direccion>
@@ -4320,21 +4320,19 @@
         <distancia unidades="m">0.68</distancia>
       </hito>
     </hitos>
-    <planimetria />
-    <altimetria />
+    <planimetria> r01-planimetria.kml </planimetria>
+    <altimetria> r01-altimetria.svg </altimetria>
   </ruta>
-  <ruta id="R02" nombre="ÁVILA: RUTA CIRCULAR MURALLAS Y EMBALSE DE FUENTES CLARAS" tipo="Arquitectura y Monumentos" medio="A pie" agencia="Sin agencia" recomendacion="8">
+  <ruta id="R02" nombre="ÁVILA: RUTA CIRCULAR MURALLAS Y EMBALSE DE FUENTES CLARAS"
+    tipo="Arquitectura y Monumentos" medio="A pie" agencia="Sin agencia" recomendacion="8">
     <horario>
       <fecha_inicio>2026-06-10</fecha_inicio>
       <hora_inicio>10:00:00</hora_inicio>
       <duracion>PT3H</duracion>
     </horario>
-    <descripcion>
-            Ruta circular que parte y regresa a la calle Paseo de la Estación, recorre todo el perímetro de las murallas de Ávila y el pantano de Fuentes Claras.
-        </descripcion>
-    <personasAdecuadas>
-            Apta para niños.
-        </personasAdecuadas>
+    <descripcion> Ruta circular que parte y regresa a la calle Paseo de la Estación, recorre todo el
+      perímetro de las murallas de Ávila y el pantano de Fuentes Claras. </descripcion>
+    <personasAdecuadas> Apta para niños. </personasAdecuadas>
     <inicio>
       <lugar>Hotel Dorma Reina Isabel</lugar>
       <direccion>P.º de la Estación, 17, 05001 Ávila</direccion>
@@ -6668,21 +6666,21 @@
         <distancia unidades="m">65.31</distancia>
       </hito>
     </hitos>
-    <planimetria />
-    <altimetria />
+    <planimetria> r02-planimetria.kml </planimetria>
+    <altimetria> r02-altimetria.svg </altimetria>
   </ruta>
-  <ruta id="R03" nombre="AVILA CIUDAD - ERMITA DE LOS SONSOLES" tipo="Senderismo - Cultura y monumentos" medio="A pie" agencia="Sin agencia" recomendacion="9">
+  <ruta id="R03" nombre="AVILA CIUDAD - ERMITA DE LOS SONSOLES"
+    tipo="Senderismo - Cultura y monumentos" medio="A pie" agencia="Sin agencia" recomendacion="9">
     <horario>
       <fecha_inicio>2026-07-05</fecha_inicio>
       <hora_inicio>09:00:00</hora_inicio>
       <duracion>PT2H29M</duracion>
     </horario>
-    <descripcion>
-            En una colina situada a 5 kilómetros de la ciudad de Ávila se encuentra la ermita de Nuestra Señora de Sonsoles. Se trata de un lugar emblemático y de gran tradición devocional para todos los abulenses. En la ermita se custodia la imagen de la Virgen de Sonsoles, copatrona de Ávila y patrona de los campos de la provincia.
-        </descripcion>
-    <personasAdecuadas>
-            Es necesario tener cierta experiencia en senderismo.
-        </personasAdecuadas>
+    <descripcion> En una colina situada a 5 kilómetros de la ciudad de Ávila se encuentra la ermita
+      de Nuestra Señora de Sonsoles. Se trata de un lugar emblemático y de gran tradición devocional
+      para todos los abulenses. En la ermita se custodia la imagen de la Virgen de Sonsoles,
+      copatrona de Ávila y patrona de los campos de la provincia. </descripcion>
+    <personasAdecuadas> Es necesario tener cierta experiencia en senderismo. </personasAdecuadas>
     <inicio>
       <lugar>Parking de Autocaravanas de Ávila</lugar>
       <direccion>Calle Santa Maria de la Cabeza, 15, 05005, Ávila</direccion>
@@ -6693,8 +6691,7 @@
       </coordenadas>
     </inicio>
     <referencias>
-      <referencia>
-        https://es.wikiloc.com/rutas-senderismo/avila-ciudad-ermita-de-sonsoles-87394661</referencia>
+      <referencia> https://es.wikiloc.com/rutas-senderismo/avila-ciudad-ermita-de-sonsoles-87394661</referencia>
       <referencia>http://www.patronatodesonsoles-avila.es/</referencia>
       <referencia>https://es.wikipedia.org/wiki/Ermita_de_Sonsoles_(%C3%81vila)</referencia>
     </referencias>
@@ -16192,7 +16189,7 @@
         <distancia unidades="m">6.25</distancia>
       </hito>
     </hitos>
-    <planimetria />
-    <altimetria />
+    <planimetria> r03-planimetria.kml </planimetria>
+    <altimetria> r03-altimetria.svg </altimetria>
   </ruta>
 </rutas>

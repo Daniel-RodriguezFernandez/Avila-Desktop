@@ -30,9 +30,11 @@ main {
 }
 
 /* Especificidad: (0,0,3) */
-article h2 + img {
+article h2+img {
     width: 100%;
     border: 1px solid #e0e0e0;
+    max-height: 450px;
+    object-fit: contain;
     border-radius: 4px;
     margin-bottom: 1.5rem;
 }

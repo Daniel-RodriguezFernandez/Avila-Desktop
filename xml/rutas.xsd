@@ -188,7 +188,7 @@
     </xs:element>
     <xs:element name="video" type="xs:string" />
 
-    <xs:element name="planimetria" />
-    <xs:element name="altimetria" />
+    <xs:element name="planimetria" type="xs:string" />
+    <xs:element name="altimetria" type="xs:string" />
 
 </xs:schema>

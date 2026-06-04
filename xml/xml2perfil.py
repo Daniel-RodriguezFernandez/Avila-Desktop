@@ -1,4 +1,3 @@
-import os
 import math
 import xml.etree.ElementTree as ET
 
@@ -125,8 +124,6 @@ def construirPerfil(ruta):
 
 
 def localizarHito(hito, lons, lats, distancias, altitudes):
-    """ Proyecta un hito con nombre sobre el perfil: devuelve la distancia
-        acumulada y la altitud del punto anonimo (del trazado) mas cercano. """
     coord = hito.find('r:coordenadas', NS)
     if coord is None or not lons:
         return None
@@ -251,8 +248,7 @@ def procesarRuta(ruta):
                 str(MARGEN_IZQ), str(MARGEN_SUP - 12),
                 'Verdana', '13', 'fill: #222; font-weight: bold;')
 
-    os.makedirs(idRuta, exist_ok=True)
-    rutaArchivo = os.path.join(idRuta, 'altimetria.svg')
+    rutaArchivo = idRuta.lower() + '-altimetria.svg'
     svg.escribir(rutaArchivo)
     print('Creado:', rutaArchivo,
           '(dist {:.0f} m, alt {:.0f}-{:.0f} m)'.format(distMax, altMin, altMax))

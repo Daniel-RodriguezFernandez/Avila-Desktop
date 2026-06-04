@@ -44,5 +44,5 @@
 <!ELEMENT videos (video+)>
 <!ELEMENT video (#PCDATA)>
 
-<!ELEMENT planimetria EMPTY>
-<!ELEMENT altimetria EMPTY>
+<!ELEMENT planimetria (#PCDATA)>
+<!ELEMENT altimetria (#PCDATA)>

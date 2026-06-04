@@ -1,4 +1,3 @@
-import os
 import xml.etree.ElementTree as ET
 
 NS = {'r': 'http://www.uniovi.es'}
@@ -96,8 +95,7 @@ def procesarRuta(ruta):
     kml.addLineString('Trazado: ' + nombreRuta, '0', '1',
                       listaCoordenadas, 'clampToGround', '#ff0000ff', '4')
 
-    os.makedirs(idRuta, exist_ok=True)
-    rutaArchivo = os.path.join(idRuta, 'planimetria.kml')
+    rutaArchivo = idRuta.lower() + '-planimetria.kml'
     kml.escribir(rutaArchivo)
     print('Creado:', rutaArchivo, '(' + nombreRuta + ')')
 
