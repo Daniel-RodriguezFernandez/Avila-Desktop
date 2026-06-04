@@ -3,16 +3,16 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Ávila-Juego</title>
+    <title>Ávila-Meteorología</title>
     <meta name="author" content="Daniel Rodríguez Fernández" />
-    <meta name="description" content="Página de juego de Ávila Desktop" />
-    <meta name="keywords" content="Ávila, Avila, Avila Desktop, Ávila Desktop, Desktop, Juego, Divertido" />
+    <meta name="description" content="Página de meteorología de Ávila Desktop" />
+    <meta name="keywords" content="Ávila, Avila, Avila Desktop, Ávila Desktop, Desktop, Meteorología, Clima" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="estilo/estilo.css" />
     <link rel="stylesheet" href="estilo/layout.css" />
     <link rel="icon" type="image/x-icon" href="multimedia/favicon.ico" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="js/juego.js"></script>
+    <script src="js/meteorologia.js"></script>
 </head>
 
 <body>
@@ -23,19 +23,24 @@
         <a href="index.html">Inicio</a>
         <a href="gastronomia.html">Gastronomía</a>
         <a href="rutas.html">Rutas</a>
-        <a href="meteorologia.html">Meteorología</a>
-        <a href="juego.html" class="activo">Juego</a>
+        <a href="meteorologia.html" class="activo">Meteorología</a>
+        <a href="juego.html">Juego</a>
         <a href="reservas.php">Reservas</a>
         <a href="ayuda.html">Ayuda</a>
     </nav>
     <main>
-        <p>Estás en: <a href="index.html">Inicio</a> &rsaquo; Juego</p>
+        <p>Estás en: <a href="index.html">Inicio</a> &rsaquo; Meteorología</p>
         <script>
-            $(document).ready(function () {
-                const juego = new Juego();
-                juego.iniciar();
+            $(document).ready(async function () {
+                try {
+                    const meteorologia = new Meteorologia();
+                    await meteorologia.cargar();
+                } catch (error) {
+                    console.error("Error al cargar la meteorología:", error);
+                }
             });
         </script>
+
     </main>
 </body>
 
