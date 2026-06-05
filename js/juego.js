@@ -151,10 +151,6 @@ class Juego {
     iniciar() {
         this.#seccion = $("<section></section>");
         this.#seccion.append($("<h2></h2>").text("Cuestionario sobre Ávila-Desktop"));
-        this.#seccion.append($("<p></p>").text(
-            "Pon a prueba lo que sabes sobre la gastronomía de Ávila. " +
-            "Debes responder a las 10 preguntas para obtener tu calificación."
-        ));
 
         this.#contenedorPreguntas = $("<ol></ol>");
         this.#preguntas.forEach((pregunta, indice) => {
@@ -168,7 +164,6 @@ class Juego {
             .on("click", () => this.#comprobar());
         this.#seccion.append(this.#boton);
 
-        // section en lugar de div para el bloque de resultado
         this.#resultado = $("<section></section>");
         this.#seccion.append(this.#resultado);
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Ávila-Rutas</title>
+    <meta name="author" content="Daniel Rodríguez Fernández" />
+    <meta name="description" content="Página de rutas de Ávila Desktop" />
+    <meta name="keywords" content="Ávila, Avila, Avila Desktop, Ávila Desktop, Desktop, Rutas, Turismo" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilo/estilo.css" />
+    <link rel="stylesheet" href="estilo/layout.css" />
+    <link rel="icon" type="image/x-icon" href="multimedia/favicon.ico" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/rutas.js"></script>
+    <script>
+        function initGoogleMaps() {
+            document.dispatchEvent(new Event("googlemapsready"));
+        }
+    </script>
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMSqIzg-4SuC3zDq_U2eY5HMAD8pj41p8&callback=initGoogleMaps&language=es"></script>
+</head>
+
+<body>
+    <header>
+        <h1><a href="index.html">Ávila Desktop</a></h1>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="gastronomia.html">Gastronomía</a>
+        <a href="rutas.html" class="activo">Rutas</a>
+        <a href="meteorologia.html">Meteorología</a>
+        <a href="juego.html">Juego</a>
+        <a href="reservas.php">Reservas</a>
+        <a href="ayuda.html">Ayuda</a>
+    </nav>
+    <main>
+        <p>Estás en: <a href="index.html">Inicio</a> &rsaquo; Rutas</p>
+        <script>
+            $(document).ready(async function () {
+                try {
+                    const rutas = new Rutas();
+                    await rutas.cargar();
+                } catch (error) {
+                    console.error("Error al cargar las rutas:", error);
+                }
+            });
+        </script>
+    </main>
+</body>
+
+</html>
