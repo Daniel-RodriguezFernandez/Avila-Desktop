@@ -1,0 +1,4 @@
+id,email,password_hash,nombre,apellidos,
+1,user1@email.com,$2y$10$Obth4wdKKvPu77RSRaZ1B.5y.LW/Ypp5F.oa5qMiLGiG6EK7YRnIO,user1,user1
+2,user2@email.com,$2y$10$NmYS2svi3TxvY4TSCeaj.u2sK7QZdgzRjkMiylsEB.hluU6vYE8Se,user2,user2
+3,user3@email.com,$2y$10$NxeGYl2.w2DNEZvLd6/3ce/a9Tpc13w4olfoI3ABv7Xnijg4ZHITi,user3,user3

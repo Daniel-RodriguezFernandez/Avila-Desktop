@@ -289,8 +289,19 @@ class Rutas {
                 descripcion: this.#limpiar(this.#texto(hito, "descripcion")),
                 longitud: this.#numero(hito, "longitud"),
                 latitud: this.#numero(hito, "latitud"),
-                altitud: this.#numero(hito, "altitud")
+                altitud: this.#numero(hito, "altitud"),
+                fotografias: this.#parsearFotografias(hito)
             }));
+    }
+
+    #parsearFotografias(nodo) {
+        return Array.from(nodo.getElementsByTagNameNS("*", "fotografia"))
+            .map((foto) => foto.textContent.trim())
+            .filter((src) => src !== "");
+    }
+
+    #rutaMultimedia(nombreArchivo) {
+        return nombreArchivo.includes("/") ? nombreArchivo : "multimedia/" + nombreArchivo;
     }
 
     #calcularResumen(nodo) {
@@ -347,7 +358,7 @@ class Rutas {
             $("main").append(articulo);
 
             new Mapa("mapa-" + ruta.id, this.#basePath + ruta.planimetria, ruta.coordenadasInicio).dibujar();
-            new Altimetria($("#altimetria-" + ruta.id), this.#basePath + ruta.altimetria).cargar();
+            new Altimetria(articulo.children("figure"), this.#basePath + ruta.altimetria).cargar();
         }
     }
 
@@ -373,7 +384,7 @@ class Rutas {
         articulo.append($("<div></div>").addClass("mapa").attr("id", "mapa-" + ruta.id));
 
         articulo.append($("<h3></h3>").text("Altimetría"));
-        articulo.append($("<figure></figure>").addClass("altimetria").attr("id", "altimetria-" + ruta.id));
+        articulo.append($("<figure></figure>"));
 
         return articulo;
     }
@@ -414,6 +425,8 @@ class Rutas {
     #crearListaHitos(hitos) {
         const lista = $("<ul></ul>");
         for (const hito of hitos) {
+            const elemento = $("<li></li>");
+
             const detalles = [];
             if (hito.descripcion) {
                 detalles.push(hito.descripcion);
@@ -422,7 +435,19 @@ class Rutas {
                 detalles.push(`${hito.altitud} m`);
             }
             const texto = detalles.length > 0 ? `${hito.nombre} — ${detalles.join(", ")}` : hito.nombre;
-            lista.append($("<li></li>").text(texto));
+            elemento.append($("<span></span>").text(texto));
+
+            if (hito.fotografias.length > 0) {
+                const figura = $("<figure></figure>");
+                const imagen = $("<img>")
+                    .attr("src", this.#rutaMultimedia(hito.fotografias[0]))
+                    .attr("alt", `Fotografía del hito ${hito.nombre}`)
+                    .attr("loading", "lazy");
+                figura.append(imagen);
+                elemento.append(figura);
+            }
+
+            lista.append(elemento);
         }
         return lista;
     }
