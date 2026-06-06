@@ -1,12 +1,7 @@
 
-CREATE USER IF NOT EXISTS 'DBUSER2026'@'localhost' IDENTIFIED BY 'DBPWD2026';
-
 CREATE DATABASE IF NOT EXISTS reservas_turismo
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
-
-GRANT ALL PRIVILEGES ON reservas_turismo.* TO 'DBUSER2026'@'localhost';
-FLUSH PRIVILEGES;
 
 USE reservas_turismo;
 
