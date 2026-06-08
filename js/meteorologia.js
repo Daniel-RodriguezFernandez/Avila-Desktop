@@ -205,12 +205,12 @@ class Meteorologia {
     #crearFilaPrevision(prevision, indice) {
         const fila = $("<tr></tr>");
 
-        fila.append($("<td></td>").text(this.#formatearDia(prevision.fecha, indice)));
-        fila.append($("<td></td>").text(this.#estado(prevision.codigo)));
-        fila.append($("<td></td>").text(this.#formatear(prevision.temperaturaMinima, this.#unidadesPrevision.temperature_2m_min)));
-        fila.append($("<td></td>").text(this.#formatear(prevision.temperaturaMaxima, this.#unidadesPrevision.temperature_2m_max)));
-        fila.append($("<td></td>").text(this.#formatear(prevision.probabilidadPrecipitacion, this.#unidadesPrevision.precipitation_probability_max)));
-        fila.append($("<td></td>").text(this.#formatear(prevision.viento, this.#unidadesPrevision.wind_speed_10m_max)));
+        fila.append($("<td></td>").attr("data-titulo", "Día").text(this.#formatearDia(prevision.fecha, indice)));
+        fila.append($("<td></td>").attr("data-titulo", "Estado").text(this.#estado(prevision.codigo)));
+        fila.append($("<td></td>").attr("data-titulo", "Mínima").text(this.#formatear(prevision.temperaturaMinima, this.#unidadesPrevision.temperature_2m_min)));
+        fila.append($("<td></td>").attr("data-titulo", "Máxima").text(this.#formatear(prevision.temperaturaMaxima, this.#unidadesPrevision.temperature_2m_max)));
+        fila.append($("<td></td>").attr("data-titulo", "Prob. precipitación").text(this.#formatear(prevision.probabilidadPrecipitacion, this.#unidadesPrevision.precipitation_probability_max)));
+        fila.append($("<td></td>").attr("data-titulo", "Viento máx.").text(this.#formatear(prevision.viento, this.#unidadesPrevision.wind_speed_10m_max)));
 
         return fila;
     }
